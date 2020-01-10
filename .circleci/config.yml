@@ -20,3 +20,12 @@ jobs:
       - run: pip3 install --user -r requirements.txt
       - run: env
       - run: ls -l
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
+      - test:
+        requires:
+          - build
