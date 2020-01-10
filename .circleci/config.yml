@@ -6,11 +6,12 @@ jobs:
       - image: circleci/python:3.5
     steps:
       - checkout
+      - run: python3 --version      
   test:
     docker:
       - image: circleci/python:3.5
     steps:
-      - run: python3 --version
+      - checkout
       - run:
         name: set FS HOME
         command: |
