@@ -6,3 +6,7 @@ jobs:
     steps:
       - checkout
       - run: python3 --version
+      - run: export FREESURFER_HOME=`pwd`
+      - run: pip3 install -r requirements.txt
+      - run: env
+      - run: ls -l
