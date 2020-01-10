@@ -13,10 +13,10 @@ jobs:
     steps:
       - checkout
       - run:
-        name: set FS HOME
-        command: |
-          export FREESURFER_HOME=`pwd`
-          env        
+          name: set FS HOME
+          command: |
+            export FREESURFER_HOME=`pwd`
+            env        
       - run: pip3 install --user -r requirements.txt
       - run: env
       - run: ls -l
