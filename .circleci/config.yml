@@ -1,16 +1,28 @@
 version: 2
+
 jobs:
   build:
     docker:
       - image: circleci/python:3.5
-    steps:
-      - checkout
-      - run: python3 --version
-      - run:
-        name: set FS HOME
-        command: |
-          export FREESURFER_HOME=`pwd`
-          env        
-      - run: pip3 install --user -r requirements.txt
-      - run: env
-      - run: ls -l
+    test:
+      steps:
+        - checkout
+        - run: python3 --version
+        - run:
+          name: set FS HOME
+          command: |
+            export FREESURFER_HOME=`pwd`
+            env        
+        - run: pip3 install --user -r requirements.txt
+        - run: env
+        - run: ls -l
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build:
+      - test:
+        requires:
+          - build
+
